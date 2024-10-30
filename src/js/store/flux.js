@@ -12,13 +12,75 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			personajes:[],
+			personaje:[],
+			planetas:[],
+			planeta:[],
+			vehiculos:[],
+			vehiculo:[],
+			favoritos:[],
+			likes:0
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			getAllPersonajes : () => {
+				fetch(`https://www.swapi.tech/api/people/`)
+					.then(res => res.json())
+					.then((data) => {
+						console.log(data.results);
+						setStore({personajes:data.results});
+					}) 
+					.catch(err => console.error(err))
+					},
+			getPersonaje : (id) => {
+				fetch(`https://www.swapi.tech/api/people/`+id,)
+					.then(res => res.json())
+					.then((data) => {
+						console.log(data);
+						setStore({personaje:data.result});
+					}) 
+					.catch(err => console.error(err))
+					},
+			getAllPlanetas : () => {
+						fetch(`https://www.swapi.tech/api/planets/`)
+					.then(res => res.json())
+					.then((data) => {
+						console.log(data.results);
+						setStore({planetas:data.results});
+					}) 
+					.catch(err => console.error(err))
+					},
+			getPlaneta : (id) => {
+					fetch(`https://www.swapi.tech/api/planets/`+id,)
+						.then(res => res.json())
+						.then((data) => {
+							console.log(data);
+							setStore({planeta:data.result});
+						}) 
+						.catch(err => console.error(err))
+						},
+			getAllVehiculos : () => {
+							fetch(`https://www.swapi.tech/api/vehicles/`)
+						.then(res => res.json())
+						.then((data) => {
+							console.log(data.results);
+							setStore({vehiculos:data.results});
+						}) 
+						.catch(err => console.error(err))
+						},
+			getVehiculo : (id) => {
+							fetch(`https://www.swapi.tech/api/vehicle/`+id,)
+								.then(res => res.json())
+								.then((data) => {
+									console.log(data);
+									setStore({vehiculo:data.result});
+								}) 
+								.catch(err => console.error(err))
+								},						
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
