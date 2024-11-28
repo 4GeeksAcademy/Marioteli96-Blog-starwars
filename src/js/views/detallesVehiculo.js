@@ -24,12 +24,12 @@ import { useParams } from "react-router";
         <p className="card-text">
           {store.vehiculo?.description}
         </p>
-        {/* <div className="card-text">
-          <p>Nombre: {store.planeta?.properties?.name}</p>
-          <p>Clima:  {store.planeta?.properties?.climate}</p>
-          <p>Diametro: {store.planeta?.properties?.diameter}</p>
-          <p>Gravedad:  {store.planeta?.properties?.gravity}</p>
-        </div> */}
+        <div className="card-text">
+          <p>Nombre: {store.vehiculo?.properties?.name}</p>
+          <p>Longitud:  {store.vehiculo?.properties?.length}</p>
+          <p>Modelo: {store.vehiculo?.properties?.model}</p>
+          <p>Pasajeros:  {store.vehiculo?.properties?.passengers}</p>
+        </div>
       </div>
     </div>
   </div>

@@ -73,14 +73,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(err => console.error(err))
 						},
 			getVehiculo : (id) => {
-							fetch(`https://www.swapi.tech/api/vehicle/`+id,)
+							fetch(`https://www.swapi.tech/api/vehicles/`+id,)
 								.then(res => res.json())
 								.then((data) => {
 									console.log(data);
 									setStore({vehiculo:data.result});
 								}) 
 								.catch(err => console.error(err))
-								},						
+								},
+			addFavorito :	(favorito)	=> {
+				const store = getStore()
+				const newFavorito = [...store.favoritos, favorito]
+				setStore({favoritos:newFavorito})
+				
+				
+			},	
+			removeFavorito: (index) => {
+				const newFavoritos = getStore().favoritos.filter((_,i) => i !== index);
+				setStore({ favoritos: newFavoritos });
+			},			
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
